@@ -1,0 +1,300 @@
+.hotel {
+  &-list {
+    @include flex(row, center, flex-start);
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  &-container {
+    @include flex(column, center, flex-start);
+    gap: 20px;
+
+    &:hover
+    {
+      opacity: 0.9;
+    }
+    &:active
+    {
+      opacity: 0.7;
+    }
+  }
+
+  &-img {
+    border-radius: 8px;
+    width: auto;
+    height: 180px;
+
+    @include mobile {
+      height: 240px;
+    }
+  }
+
+  &-info {
+    @include flex(row, center, flex-start);
+    gap: 20px;
+
+    p {
+      @include flex(column, center, flex-start);
+      gap: 7px;
+      color: $color-black;
+      font-size: var(--font-size-md);
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    span {
+      color: $color-grey-dark-1;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}
+
+.stars {
+  @include flex(row, center, flex-start);
+  gap: 7px;
+  padding-top: 10px;
+}
+
+.star {
+ width: 15px;
+ height: 15px;
+}
+
+
+.search {
+  @include flex(row, center, center);
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-top: 70px;
+
+  @include desktop {
+    justify-content: space-between;
+  }
+
+  &-bg {
+    background: $color-grey-light-1;
+    width: 100vw;
+    margin-top: -200px;
+    padding: 200px 0 80px 0;
+  }
+
+  &-button {
+    padding: 30px 60px;
+    border-radius: 5px;
+    background: $color-grey-dark-2;
+    color: $color-white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 5px;
+    width: 226px;
+    height: 80px;
+
+    @include tablet {
+      margin-left: 43px;
+    }
+    @include desktop {
+      margin: 0;
+    }
+
+    &:hover {
+      background: $color-grey-dark-1;
+    }
+    &:active {
+      background: $color-grey-1;
+    }
+  }
+}
+
+.input {
+  &-dropdown {
+    @include flex(column, center, flex-start);
+    gap: 12px;
+    position: relative;
+    width: 270px;
+
+    &__list {
+      background: $color-grey-light-2;
+      padding: 4px;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      z-index: 1;
+      width: 97%;
+      max-height: 200px;
+      height: min-content;
+      overflow-y: scroll;
+      border-radius: 8px;
+      border: 1px solid $color-grey-1;
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $color-grey-1;
+        border-radius: 20px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 20px;
+        border: 0.1px solid $color-grey-light-1;
+      }
+
+      span {
+        position: relative;
+        padding-bottom: 3px;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: $color-grey-2;
+        }
+      }
+
+      div {
+        margin: 30px 0;
+      }
+
+      ul {
+        padding-top: 10px;
+        padding-left: 80px;
+      }
+
+      p {
+        padding: 20px 10px 10px;
+      }
+
+      li {
+        cursor: pointer;
+
+        &:hover {
+          color: $color-grey-2;
+        }
+      }
+    }
+  }
+
+  &-input {
+    padding: 18px;
+    border-radius: 5px;
+    border: 1px solid $color-grey-light-2;
+    color: $color-grey-2;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1px;
+    width: 86%;
+    outline: $color-grey-1;
+
+    &:focus {
+      border: 1px solid $color-grey-1;
+    }
+  }
+
+  &-icon {
+    position: absolute;
+    top: 45px;
+    right: 15px;
+    color: $color-grey-1;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-grey-dark-1;
+    }
+    &:active {
+      color: $color-grey-dark-2;
+    }
+  }
+}
+
+.calendar {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  z-index: 1;
+  background-color: $color-grey-light-2;
+  box-shadow: 0 0 5px $color-white-opacity-1;
+  border-radius: 8px;
+  border: 0.1px solid $color-grey-1;
+  padding: 0 10px 10px;
+  width: 248px;
+
+  table {
+    border-collapse: collapse;
+    font-size: smaller;
+  }
+
+  th,
+  td {
+    width: 35px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid $color-grey-2;
+  }
+  th {
+    font-size: x-small;
+  }
+
+  td:hover {
+    background-color: $color-grey-1;
+    cursor: pointer;
+  }
+
+  &-header {
+    @include flex(row, space-between, center);
+    gap: 20px;
+    padding: 10px 0;
+
+    button {
+      color: $color-black;
+
+      &:hover {
+        color: $color-grey-1;
+      }
+      &:active {
+        color: $color-grey-2;
+      }
+    }
+
+    span {
+      width: 12px;
+    }
+
+    .month {
+      width: 140px;
+    }
+
+    &__period {
+      @include flex(row, space-between, center);
+      font-size: medium;
+
+      span {
+        display: block;
+        width: min-content;
+        text-align: center;
+        padding: 0 12px;
+      }
+    }
+  }
+}
+
+.label {
+  color: $color-grey-1;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 3px;
+  text-transform: capitalize;
+}

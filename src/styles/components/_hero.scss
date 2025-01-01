@@ -1,0 +1,218 @@
+.hero {
+  min-height: 100vh;
+  max-height: max-content;
+  width: 100vw;
+  min-width: max-content;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &-overlay {
+    background: $color-overlay-light;
+    min-height: 100vh;
+    max-height: max-content;
+    min-width: max-content;
+  }
+
+  &-content {
+    @include flex(column, center, center);
+    gap: 40px;
+    max-width: 90vw;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    $base-paddingTop: 25vh;
+    $increment: 2vh;
+
+    @function calculate-paddingTop($increment, $multiplier) {
+      @return $base-paddingTop + ($increment * $multiplier);
+    }
+
+    @mixin dynamic-paddingTop($multiplier) {
+      padding-top: calculate-paddingTop($increment, $multiplier);
+    }
+
+    @for $i from 1 through 8 {
+      $dynamic-paddingTop: $i - 1;
+
+      @media screen and (min-height: #{400px + ($i - 1) * 100px}) {
+        @include dynamic-paddingTop($dynamic-paddingTop);
+      }
+    }
+
+    @include mobile {
+      gap: 50px;
+      padding-bottom: 40px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    @include tablet {
+      gap: 60px;
+      padding-bottom: 60px;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+    @include desktop {
+      gap: 100px;
+      padding-bottom: 80px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+}
+
+.activeBg {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: $color-white;
+}
+
+.bg-1 {
+  background-image: url(/bg/hero/1.webp);
+}
+.bg-2 {
+  background-image: url(/bg/hero/2.webp);
+}
+.bg-3 {
+  background-image: url(/bg/hero/3.webp);
+}
+.bg-4 {
+  background-image: url(/bg/hero/4.webp);
+}
+.bg-5 {
+  background-image: url(/bg/hero/5.webp);
+}
+.bg-6 {
+  background-image: url(/bg/hero/6.webp);
+}
+.bg-7 {
+  background-image: url(/bg/hero/7.webp);
+}
+
+.blockOfElements {
+  @include flex(row, space-between, center);
+  width: 100%;
+  gap: 10px;
+
+  @include mobile {
+    gap: 30px;
+  }
+
+  &-second {
+    padding-left: 44px;
+    width: 94%;
+
+    @include tablet {
+      padding-left: 37px;
+      width: 97%;
+    }
+
+    @include desktop {
+      padding-left: 38px;
+      width: 98%;
+    }
+  }
+}
+
+.socials-header {
+  @include tablet {
+    height: 142px;
+  }
+
+  li {
+    width: 40px;
+    height: 40px;
+
+    a {
+      width: 40px;
+      height: 40px;
+
+      svg {
+        fill: $color-white;
+        width: 20px;
+        height: 20px;
+
+        &:hover {
+          fill: $color-grey-1;
+        }
+      }
+    }
+  }
+}
+
+.main-title {
+  @include flex(column, center, center);
+  gap: 10px;
+  font-size: var(--font-size-xxl);
+  color: $color-white;
+  font-weight: 700;
+  text-transform: capitalize;
+  line-height: 1;
+
+  @include mobile {
+    gap: 0;
+  }
+
+  span {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    letter-spacing: 10px;
+    opacity: 0.7;
+    text-transform: uppercase;
+
+    @include mobile {
+      letter-spacing: 16.5px;
+    }
+  }
+}
+
+.locations {
+  @include flex(row, center, center);
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-left: -120px;
+
+  @include desktop {
+    flex-wrap: nowrap;
+    gap: 35px;
+  }
+
+  &-block {
+    @include flex(row, flex-start, center);
+    gap: 25px;
+    color: $color-grey-light-2;
+    border-radius: 5px;
+    background: $color-white-opacity-1;
+    padding: 20px 50px 20px 20px;
+
+    @include desktop {
+      width: 190px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    div {
+      @include flex(column, center, flex-start);
+      gap: 4px;
+      filter: none;
+
+      p {
+        color: $color-grey-light-2;
+      }
+
+      h6 {
+        font-weight: 700;
+        color: $color-white;
+        font-size: var(--font-size-xs);
+      }
+    }
+  }
+}

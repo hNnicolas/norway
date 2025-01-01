@@ -1,0 +1,467 @@
+main {
+  @include flex(column, center, center);
+  gap: 3rem;
+  margin-top: -60px;
+  padding: 0 0 40px 0;
+
+  @include tablet {
+    margin-top: -77px;
+  }
+  @include desktop {
+    margin-top: -81px;
+  }
+}
+
+.section {
+  margin: 0 auto;
+}
+
+.logo {
+  img {
+    width: 45px;
+    height: 45px;
+  }
+  p {
+    color: $color-white;
+    font-family: Roboto;
+    font-size: var(--font-size-sm);
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 3.6px;
+  }
+
+  &:hover {
+    p {
+      color: $color-grey-light-2;
+    }
+
+    img {
+      opacity: 0.7;
+    }
+  }
+
+  &-column {
+    @include flex(column, center, center);
+    gap: 10px;
+  }
+
+  &-row {
+    @include flex(row, center, center);
+    gap: 12px;
+    z-index: 10;
+  }
+
+  &-footer {
+    p {
+      color: $color-black;
+    }
+    &:hover {
+      p {
+        color: $color-grey-dark-1;
+      }
+    }
+    img {
+      @include flex(row, center, center);
+      background: $color-black;
+      border-radius: 50%;
+      padding: 7px;
+    }
+  }
+}
+
+.navigation {
+  @include flex(row, space-between, center);
+  gap: 24px;
+  font-size: var(--font-size-sm);
+  color: $color-white;
+  z-index: 7;
+
+  @include desktop {
+    font-size: var(--font-size-xs);
+  }
+
+  a:hover {
+    color: $color-grey-1;
+  }
+
+  .active:hover {
+    color: none;
+  }
+
+  &-column {
+    @include flex(column, center, center);
+    gap: 24px;
+  }
+
+  &-row {
+    @include flex(row, center, center);
+    gap: 65px;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+    color: $color-grey-dark-1;
+  }
+}
+
+.title {
+  @include flex(row, center, center);
+  font-size: var(--font-size-xl);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+.subtitle {
+  @include flex(row, center, center);
+  color: $color-grey-2;
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 11.2px;
+  text-transform: uppercase;
+  padding: 50px 0 25px 0;
+}
+
+.button {
+  &-chevron {
+    width: 50px;
+    height: 50px;
+    svg {
+      width: 40px;
+      height: 40px;
+      fill: $color-white;
+
+      &:hover {
+        fill: $color-grey-1;
+      }
+    }
+  }
+
+  &-reverse {
+    @include flex(row, center, center);
+    gap: 7px;
+    width: max-content;
+    color: $color-white;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    white-space: nowrap;
+    padding-top: 90px;
+
+    &:hover {
+      color: $color-grey-1;
+    }
+
+    svg {
+      width: 40px;
+      height: 40px;
+      fill: $color-white;
+    }
+  }
+
+  &-remove {
+    @include flex(row, center, center);
+    gap: 3px;
+    color: $color-orange;
+
+    &:hover {
+      opacity: 0.6;
+    }
+    &:active {
+      opacity: 0.8;
+    }
+  }
+
+  &-place {
+    color: $color-grey-2;
+    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    text-align: left;
+
+    &:hover {
+      color: $color-grey-1;
+    }
+    &:active {
+      color: $color-black;
+    }
+  }
+}
+
+.place {
+  &-list {
+    @include flex(column, center, flex-start);
+    gap: 12px;
+    position: absolute;
+    z-index: 10;
+    padding: 7px;
+    background: $color-grey-light-1;
+    border: 1px solid $color-black;
+    border-radius: 7px;
+    cursor: alias;
+    top: 114px;
+    left: 24px;
+    width: 88%;
+
+    @include tablet {
+      top: 140px;
+      left: 10px;
+      width: 100%;
+    }
+  }
+
+  &-item {
+    @include flex(row, space-between, center);
+    gap: 20px;
+    width: 100%;
+    cursor: alias;
+  }
+}
+
+// @keyframes gradientAnimation {
+//   0% {
+//     background-position: 100% 0;
+//   }
+//   100% {
+//     background-position: -100% 0;
+//   }
+// }
+
+// .loading-container {
+//   width: 100%;
+//   height: 100vh;
+//   overflow: hidden;
+//   background: linear-gradient(to right, #5fff74cd, #7bfea4b5, #ffef5fb6);
+//   background-color: $color-black;
+//   background-size: 200% 100%;
+//   animation: gradientAnimation 3s linear infinite;
+// }
+
+.modal {
+  &-backdrop {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $color-overlay-dark;
+    cursor: pointer;
+  }
+
+  &-background {
+    z-index: 102;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    height: 90vh;
+    transform: translate(-50%, -50%);
+    background: $color-grey-light-2;
+    border-radius: 7px;
+  }
+
+  &-title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transform: translateX(-50%);
+  }
+}
+
+.root {
+  position: relative;
+  width: 85%;
+  margin-left: 8%;
+
+  @include tablet {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.root * {
+  box-sizing: border-box;
+}
+
+:root::after {
+  content: '';
+  position: absolute;
+  top: -9999px; /* Keep it out of view */
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  background: url(/bg/hero/1.webp), url(/bg/hero/2.webp), url(/bg/hero/3.webp),
+              url(/bg/hero/4.webp), url(/bg/hero/5.webp), url(/bg/hero/6.webp),
+              url(/bg/hero/7.webp);
+}
+
+.input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid rgb(34, 34, 34);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 3px;
+}
+
+.input:focus {
+  border-color: $color-grey-1;
+  outline: none;
+}
+
+.suggestions {
+  position: absolute;
+  top: 0;
+  transform: translateY(39px);
+  background: #fff;
+  border: 2px solid rgb(34, 34, 34);
+  width: 100%;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.listItem {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.map-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.containerMap {
+  margin: 0 auto;
+  width: 90%;
+  height: 55%;
+  padding: 10px;
+
+  $base-height-before700: 60%;
+  $base-height-after700: 75%;
+  $increment-before700: 5%;
+  $increment-after700: 2%;
+
+  @function calculate-height($increment, $multiplier, $base-height) {
+    @return $base-height + ($increment * $multiplier);
+  }
+
+  @mixin dynamic-height-before700($multiplier) {
+    height: calculate-height(
+      $increment-before700,
+      $multiplier,
+      $base-height-before700
+    );
+  }
+
+  @mixin dynamic-height-after700($multiplier) {
+    height: calculate-height(
+      $increment-after700,
+      $multiplier,
+      $base-height-after700
+    );
+  }
+
+  @for $i from 1 through 4 {
+    $dynamic-height: $i - 1;
+
+    @media screen and (min-height: #{400px + ($i - 1) * 100px}) {
+      @include dynamic-height-before700($dynamic-height);
+    }
+  }
+
+  @for $i from 1 through 8 {
+    $dynamic-height: $i - 1;
+
+    @media screen and (min-height: #{700px + ($i - 1) * 100px}) {
+      @include dynamic-height-after700($dynamic-height);
+    }
+  }
+}
+
+.addressSearchContainer {
+  padding: 80px 10px 10px 10px;
+}
+
+.autocompleteWrapper {
+  position: relative;
+  @include flex(row, center, center);
+  column-gap: 10px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.modeToggle {
+  background: $color-white-opacity-4;
+  border: 1px solid $color-grey-2;
+  cursor: pointer;
+  color: $color-black;
+  border-radius: 3px;
+  padding: 4px 7px;
+  height: 41px;
+
+  &:hover {
+    background: $color-grey-light-1;
+    color: $color-black;
+  }
+  &:active {
+    counter-reset: $color-white;
+    background: $color-grey-light-2;
+  }
+
+  &-marker {
+    background: $color-grey-2;
+    color: $color-white;
+
+    &:hover {
+      background: $color-grey-2;
+      color: $color-white;
+    }
+  }
+}
+
+.loader {
+  &-container {
+    @include flex(row, center, center);
+  }
+  &-spinner {
+    border: 3px solid $color-grey-1;
+    border-top: 3px solid $color-orange;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}

@@ -1,0 +1,67 @@
+.header {
+  @include flex(row, space-between, center);
+  color: $color-white;
+  padding: 10px 10px 0;
+  max-width: 90vw;
+
+  @include mobile {
+    padding: 15px 20px 0;
+  }
+  @include tablet {
+    padding: 30px 32px 0;
+  }
+  @include desktop {
+    padding: 36px 16px 0;
+  }
+}
+
+.burger {
+  &-button {
+    color: $color-white;
+    z-index: 10;
+  }
+
+  &-close {
+    position: absolute;
+    top: 3vh;
+    right: 1vw;
+    color: $color-grey-1;
+    z-index: 110;
+  }
+
+  &-button,
+  &-close {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+    &:hover {
+      svg {
+        color: $color-black;
+      }
+    }
+  }
+
+  &-background {
+    z-index: 102;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $color-grey-2;
+  }
+
+  &-column {
+    @include flex(column, flex-start, center);
+    gap: 44px;
+    z-index: 103;
+    position: relative;
+    height: 100%;
+    padding: 20vh 0.1vw;
+    overflow: auto;
+  }
+}
